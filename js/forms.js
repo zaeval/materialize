@@ -5,6 +5,7 @@
       'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea';
     $(input_selector).each(function(element, index) {
       let $this = $(this);
+      console.log(element);
       if (
         element.value.length > 0 ||
         $(element).is(':focus') ||
@@ -24,7 +25,6 @@
     let hasLength = object.attr('data-length') !== null;
     let lenAttr = parseInt(object.attr('data-length'));
     let len = object[0].value.length;
-
     if (len === 0 && object[0].validity.badInput === false && !object.is(':required')) {
       if (object.hasClass('validate')) {
         object.removeClass('valid');
@@ -149,6 +149,7 @@
           .siblings('label')
           .addClass('active');
       }
+      console.log(this);
       M.validate_field($(this));
     });
 
@@ -192,7 +193,7 @@
     document.addEventListener(
       'focus',
       function(e) {
-        if ($(e.target).is(input_selector)) {
+        if ($(e.target).is(input_selector) && $(e.target).attr('readonly') == null) {
           $(e.target)
             .siblings('label, .prefix')
             .addClass('active');

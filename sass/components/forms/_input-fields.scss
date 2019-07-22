@@ -43,12 +43,14 @@ textarea.materialize-textarea {
   &:read-only {
     color: $input-disabled-color;
     border-bottom: $input-disabled-border;
+    pointer-events:none;
   }
 
   // Disabled label style
   &:disabled+label,
   &:read-only+label {
     color: $input-disabled-color;
+    pointer-events:none;
   }
 
   // Focused input style
